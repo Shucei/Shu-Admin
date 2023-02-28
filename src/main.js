@@ -1,5 +1,10 @@
 import { createApp } from 'vue'
-import './style.css'
+import VueRouter from './router'
+import 'normalize.css'
+// 引入全局样式
+import '@/styles/index.scss'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(VueRouter).mount('#app')
+
