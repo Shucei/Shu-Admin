@@ -3,8 +3,11 @@ import VueRouter from './router'
 import 'normalize.css'
 // 引入全局样式
 import '@/styles/index.scss'
+// 导入svgIcon
+import svgIconPlugin from '@/icons/index'
 import App from './App.vue'
-
 const app = createApp(App)
 app.use(VueRouter).mount('#app')
+
+svgIconPlugin(app)
 

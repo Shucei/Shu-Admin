@@ -31,6 +31,27 @@
 
 <script setup>
 import { CircleClose, UserFilled, Lock, User } from "@element-plus/icons-vue";
+
+// 数据源
+const LoginForm = reactive({
+  username: 'admin',
+  password: '123456'
+})
+// 验证规则
+const rules = reactive({
+  username: [
+    { required: true, message: '用户名为必填项', trigger: 'blur' },
+    { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
+  ],
+  password: [
+    {
+      required: true,
+      message: 'Please select Activity zone',
+      trigger: 'change',
+    },
+  ]
+})
+
 </script>
 
 <style lang="scss" scoped></style>

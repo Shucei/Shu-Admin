@@ -12,6 +12,7 @@
         <LoginForm />
       </div>
     </div>
+
   </div>
 </template>
 
@@ -19,6 +20,9 @@
 <script setup name="login">
 // 导入组件之后无需注册可直接使用
 import LoginForm from './components/LoginForm.vue';
+
+
+
 </script>
 
 <style lang="scss" scoped>
