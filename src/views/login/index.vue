@@ -1,6 +1,9 @@
 <template>
   <div class="login-container flx-center">
     <div class="login-box">
+      <div class="dark">
+        <el-switch inline-prompt :active-icon="Sunny" :inactive-icon="Moon" />
+      </div>
       <div class="login-left">
         <img src="@/assets/images/login_left.svg" alt="login" />
       </div>
@@ -22,11 +25,11 @@
 import LoginForm from './components/LoginForm.vue';
 
 
-
 </script>
 
 <style lang="scss" scoped>
 .login-container {
+
   height: 100%;
   min-height: 550px;
   // background-color: #eeeeee;
@@ -34,22 +37,28 @@ import LoginForm from './components/LoginForm.vue';
   background-size: 100% 100%;
   background-size: cover;
 
+
+
   .login-box {
     position: relative;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 96%;
-    height: 94%;
+    width: 94%;
+    height: 92%;
     padding: 0 50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     background-color: hsl(0deg 0% 100% / 80%);
     border-radius: 10px;
+    box-shadow: 2px 2px 15px 5px #e4e4e4;
 
     .dark {
       position: absolute;
       top: 13px;
-      right: 18px;
+      right: 15px;
     }
 
     .login-left {
@@ -67,7 +76,7 @@ import LoginForm from './components/LoginForm.vue';
       padding: 50px 40px 45px;
       background-color: #ffffff;
       border-radius: 10px;
-      box-shadow: 2px 3px 7px rgb(0 0 0 / 20%);
+      box-shadow: 1px 1px 15px 2px #e4e4e4;
 
       .login-logo {
         display: flex;
@@ -86,7 +95,14 @@ import LoginForm from './components/LoginForm.vue';
           font-size: 42px;
           font-weight: bold;
           color: #34495e;
+          // 文本不换行
           white-space: nowrap;
+          // 文本不可选中
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
         }
       }
 

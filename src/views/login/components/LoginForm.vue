@@ -1,7 +1,7 @@
 <template>
-  <el-form>
+  <el-form :model="LoginForm" :rules="loginRules">
     <el-form-item prop="username">
-      <el-input placeholder="用户名：admin / user">
+      <el-input placeholder="用户名：admin / user" v-model="LoginForm.username">
         <template #prefix>
           <el-icon class="el-input__icon">
             <User />
@@ -11,7 +11,8 @@
     </el-form-item>
 
     <el-form-item prop="password">
-      <el-input type="password" placeholder="密码：123456" show-password autocomplete="new-password">
+      <el-input type="password" placeholder="密码：123456" show-password autocomplete="new-password"
+        v-model="LoginForm.password">
         <template #prefix>
           <el-icon class="el-input__icon">
             <Lock />
@@ -30,6 +31,7 @@
 </template>
 
 <script setup>
+import { validatePassword } from "@/utils/rules";
 import { CircleClose, UserFilled, Lock, User } from "@element-plus/icons-vue";
 
 // 数据源
@@ -38,16 +40,16 @@ const LoginForm = reactive({
   password: '123456'
 })
 // 验证规则
-const rules = reactive({
+const loginRules = reactive({
   username: [
     { required: true, message: '用户名为必填项', trigger: 'blur' },
-    { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
+    { min: 3, max: 7, message: 'Length should be 3 to 7', trigger: 'blur' },
   ],
   password: [
     {
       required: true,
-      message: 'Please select Activity zone',
-      trigger: 'change',
+      trigger: 'blur',
+      validator: validatePassword()
     },
   ]
 })
