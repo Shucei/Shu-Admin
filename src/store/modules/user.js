@@ -1,9 +1,18 @@
 import { login as submitLogin } from "@/api/user.js";
 import md5 from "md5";
+// md5(password)
+import {setItem,getItem,removeItem} from '@/utils/storage'
 export default {
   namespaced: true,
-  state: () => ({}),
-  mutations: {},
+  state: () => ({
+    token: getItem('token') || '', // 设置token为共享状态
+    userInfo: {}
+  }),
+  mutations: {
+    setToken(state,data){
+      setItem('token',data)
+    }
+  },
   actions: {
     /**
      * 登录请求
@@ -11,20 +20,13 @@ export default {
      * @param {*} userInfo 
      * @returns 
      */
-    login(context, userInfo) {
+    async login(context, userInfo) {
       const { username, password } = userInfo;
-      return new Promise((resolve, reject) => {
-        submitLogin({
-          username,
-          password: md5(password),
+        const data =  await submitLogin({
+          mobile:username,
+          password
         })
-          .then((data) => {
-            resolve();
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      });
+        context.commit('setToken',data)
     },
   },
 };

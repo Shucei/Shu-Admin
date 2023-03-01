@@ -34,21 +34,21 @@
 
 <script setup>
 import { validatePassword } from "@/utils/rules";
-import { CircleClose, UserFilled, Lock, User } from "@element-plus/icons-vue";
+import { CircleClose, UserFilled, Lock, User, Message } from "@element-plus/icons-vue";
 import { ref, reactive } from "vue";
 import { useStore } from "vuex";
 
 const formRef = ref(null)
 // 数据源
 const LoginForm = reactive({
-  username: 'admin',
+  username: '13800000002',
   password: '123456'
 })
 // 验证规则
 const loginRules = reactive({
   username: [
     { required: true, message: '用户名为必填项', trigger: 'blur' },
-    { min: 3, max: 7, message: 'Length should be 3 to 7', trigger: 'blur' },
+    { min: 3, max: 11, message: 'Length should be 3 to 11', trigger: 'blur' },
   ],
   password: [
     {
@@ -72,9 +72,20 @@ const handerLogin = () => {
   // 表单校验
   formRef.value.validate(async valid => {
     if (valid) {
-      loading.value = true
-      const data = await store.dispatch('user/login', LoginForm)
-      console.log(data);
+      try {
+        loading.value = true
+        await store.dispatch('user/login', LoginForm)
+        ElMessage({
+          message: '登录成功',
+          type: "success",
+          duration: 1500,
+        });
+      } catch (error) {
+        console.log(error)
+      } finally {
+        // 不论成功还是失败都要关闭转圈
+        loading.value = false
+      }
     }
   })
 }

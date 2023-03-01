@@ -18,7 +18,8 @@
     "scss-loader": "^0.0.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6",
-    "vuex": "^4.1.0"
+    "vuex": "^4.1.0",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
