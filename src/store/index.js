@@ -2,6 +2,9 @@ import { createStore } from 'vuex'
 import createPersistedstate from 'vuex-persistedstate' // 用于持久化
 import user from './modules/user.js'
 export default createStore({
+  getters:{
+    token:state=>state.user.token
+  },
   modules: {
     user
   },

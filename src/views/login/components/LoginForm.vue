@@ -36,6 +36,7 @@
 import { validatePassword } from "@/utils/rules";
 import { CircleClose, UserFilled, Lock, User, Message } from "@element-plus/icons-vue";
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 const formRef = ref(null)
@@ -68,6 +69,7 @@ const resetForm = (formEl) => {
 // 处理登录
 const loading = ref(false)
 const store = useStore()
+const router = useRouter()
 const handerLogin = () => {
   // 表单校验
   formRef.value.validate(async valid => {
@@ -80,6 +82,7 @@ const handerLogin = () => {
           type: "success",
           duration: 1500,
         });
+        router.push('/')
       } catch (error) {
         console.log(error)
       } finally {
