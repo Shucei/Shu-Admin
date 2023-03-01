@@ -5,9 +5,11 @@ import 'normalize.css'
 import '@/styles/index.scss'
 // 导入svgIcon
 import svgIconPlugin from '@/icons/index'
+// 导入vuex
+import store from '@/store/index'
 import App from './App.vue'
 const app = createApp(App)
-app.use(VueRouter).mount('#app')
+app.use(VueRouter).use(store).mount('#app')
 
 svgIconPlugin(app)
 

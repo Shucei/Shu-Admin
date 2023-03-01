@@ -47,5 +47,17 @@ export default defineConfig({
     // 忽略后缀名的配置选项, 添加 .vue 选项时要记得原本默认忽略的选项也要手动写入
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
   },
-
+  server:{
+     // 配置反向代理
+     proxy: {
+      // 当地址中有/api的时候会触发代理机制
+      '/api': {
+        target: 'http://ihrm-java.itheima.net',
+        changeOrigin: true,
+        configure: (proxy, options) => {
+          // proxy 是 'http-proxy' 的实例
+        }
+      },
+    }
+  }
 })

@@ -1,39 +1,44 @@
 <template>
-  <el-form :model="LoginForm" :rules="loginRules">
-    <el-form-item prop="username">
-      <el-input placeholder="用户名：admin / user" v-model="LoginForm.username">
-        <template #prefix>
-          <el-icon class="el-input__icon">
-            <User />
-          </el-icon>
-        </template>
-      </el-input>
-    </el-form-item>
+  <div>
+    <el-form ref="formRef" :model="LoginForm" :rules="loginRules">
+      <el-form-item prop="username">
+        <el-input placeholder="用户名：admin / user" v-model="LoginForm.username">
+          <template #prefix>
+            <el-icon class="el-input__icon">
+              <User />
+            </el-icon>
+          </template>
+        </el-input>
+      </el-form-item>
 
-    <el-form-item prop="password">
-      <el-input type="password" placeholder="密码：123456" show-password autocomplete="new-password"
-        v-model="LoginForm.password">
-        <template #prefix>
-          <el-icon class="el-input__icon">
-            <Lock />
-          </el-icon>
-        </template>
-      </el-input>
-    </el-form-item>
+      <el-form-item prop="password">
+        <el-input type="password" placeholder="密码：123456" show-password autocomplete="new-password"
+          v-model="LoginForm.password">
+          <template #prefix>
+            <el-icon class="el-input__icon">
+              <Lock />
+            </el-icon>
+          </template>
+        </el-input>
+      </el-form-item>
 
-    <el-form-item class="bnt-flex">
-      <el-button :icon="CircleClose" round size="large">重置</el-button>
-      <el-button :icon="UserFilled" round size="large" type="primary" :loading="loading">
-        登录
-      </el-button>
-    </el-form-item>
-  </el-form>
+      <el-form-item class="bnt-flex">
+        <el-button :icon="CircleClose" round size="large" @click="resetForm(formRef)">重置</el-button>
+        <el-button :icon="UserFilled" round size="large" type="primary" :loading="loading" @click="handerLogin">
+          登录
+        </el-button>
+      </el-form-item>
+    </el-form>
+  </div>
 </template>
 
 <script setup>
 import { validatePassword } from "@/utils/rules";
 import { CircleClose, UserFilled, Lock, User } from "@element-plus/icons-vue";
+import { ref, reactive } from "vue";
+import { useStore } from "vuex";
 
+const formRef = ref(null)
 // 数据源
 const LoginForm = reactive({
   username: 'admin',
@@ -54,6 +59,27 @@ const loginRules = reactive({
   ]
 })
 
+// 重置
+const resetForm = (formEl) => {
+  if (!formEl) return
+  formRef.value.resetFields()
+}
+
+// 处理登录
+const loading = ref(false)
+const store = useStore()
+const handerLogin = () => {
+  // 表单校验
+  formRef.value.validate(async valid => {
+    if (valid) {
+      loading.value = true
+      const data = await store.dispatch('user/login', LoginForm)
+      console.log(data);
+    }
+  })
+}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

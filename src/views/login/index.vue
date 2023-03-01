@@ -53,7 +53,8 @@ import LoginForm from './components/LoginForm.vue';
     transform: translate(-50%, -50%);
     background-color: hsl(0deg 0% 100% / 80%);
     border-radius: 10px;
-    box-shadow: 2px 2px 15px 5px #e4e4e4;
+    box-shadow: 1px 1px 15px 1px #e4e4e4;
+
 
     .dark {
       position: absolute;
@@ -76,7 +77,7 @@ import LoginForm from './components/LoginForm.vue';
       padding: 50px 40px 45px;
       background-color: #ffffff;
       border-radius: 10px;
-      box-shadow: 1px 1px 15px 2px #e4e4e4;
+      box-shadow: 2px 3px 7px rgb(0 0 0 / 20%);
 
       .login-logo {
         display: flex;
