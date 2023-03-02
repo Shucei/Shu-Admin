@@ -4,10 +4,11 @@
     "module": "esnext",
     "jsx": "preserve",
     "baseUrl": "./",
+    "allowJs": true,
     "moduleResolution": "node",
     "paths": {
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
-  }
+  },
 }

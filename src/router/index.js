@@ -1,16 +1,16 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-
+import { createRouter, createWebHashHistory } from 'vue-router'
+import layout from '@/layout/index.vue'
 /**
  * 公开路由表
  */
 const publicRoutes = [
   {
-    path:'/',
-    component:()=>import('@/views/layout')
-  },
-  {
     path: '/login',
     component: () => import('@/views/login/index.vue')
+  },
+  {
+    path: '/',
+    component: layout
   },
   {
     path: '/404',

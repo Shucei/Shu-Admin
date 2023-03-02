@@ -41,7 +41,7 @@ import { useStore } from "vuex";
 
 const formRef = ref(null)
 // 数据源
-const LoginForm = reactive({
+const LoginForm = ref({
   username: '13800000002',
   password: '123456'
 })
@@ -76,7 +76,7 @@ const handerLogin = () => {
     if (valid) {
       try {
         loading.value = true
-        await store.dispatch('user/login', LoginForm)
+        await store.dispatch('user/login', LoginForm.value)
         ElMessage({
           message: '登录成功',
           type: "success",

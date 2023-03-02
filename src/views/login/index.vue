@@ -2,7 +2,7 @@
   <div class="login-container flx-center">
     <div class="login-box">
       <div class="dark">
-        <el-switch inline-prompt :active-icon="Sunny" :inactive-icon="Moon" />
+        <el-switch v-model="isDark" inline-prompt :active-icon="Moon" :inactive-icon="Sunny" />
       </div>
       <div class="login-left">
         <img src="@/assets/images/login_left.svg" alt="login" />
@@ -23,8 +23,9 @@
 <script setup name="login">
 // 导入组件之后无需注册可直接使用
 import LoginForm from './components/LoginForm.vue';
-
-
+import { useDark, useToggle } from '@vueuse/core'
+import { Sunny, Moon } from "@element-plus/icons-vue";
+const isDark = useDark()
 </script>
 
 <style lang="scss" scoped>

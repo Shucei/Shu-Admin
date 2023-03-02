@@ -6,9 +6,6 @@
         Shu-Admin
       </h1>
     </div>
-    <el-scrollbar>
-      <!-- <sidebar-menu></sidebar-menu> -->
-    </el-scrollbar>
   </div>
 </template>
 
