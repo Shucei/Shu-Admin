@@ -6,11 +6,15 @@
         Shu-Admin
       </h1>
     </div>
+    <el-scrollbar>
+      <sidebar-menu></sidebar-menu>
+    </el-scrollbar>
+
   </div>
 </template>
 
 <script setup>
-// import SidebarMenu from './SidebarMenu'
+import SidebarMenu from './SidebarMenu'
 import { } from 'vue'
 
 const logoHeight = 30

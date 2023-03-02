@@ -46,7 +46,6 @@ export default {
       // 将员工的基本信息和用户基本资料合并
       const baseResult = { ...result, ...baseInfo }
       context.commit('setUserInfo', baseResult)
-      console.log(baseInfo)
       return baseResult
     },
     logout(context) {
