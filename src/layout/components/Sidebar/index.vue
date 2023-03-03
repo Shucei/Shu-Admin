@@ -1,10 +1,12 @@
 <template>
   <div class="">
     <div class="logo-container">
-      <SvgIcon icon="logo" class=""></SvgIcon>
-      <h1 class="logo-title">
-        Shu-Admin
-      </h1>
+      <SvgIcon icon="logo" :style="changeMargin"></SvgIcon>
+      <transition>
+        <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
+          Shu-Admin
+        </h1>
+      </transition>
     </div>
     <el-scrollbar>
       <sidebar-menu></sidebar-menu>
@@ -14,10 +16,20 @@
 </template>
 
 <script setup>
+import { watch } from 'vue';
+import { useStore } from 'vuex';
 import SidebarMenu from './SidebarMenu'
-import { } from 'vue'
+const store = useStore()
+const margin = {
+  margin: 'auto'
+}
+const nomarin = {
+  margin: 'none'
+}
 
-const logoHeight = 30
+watch(store.getters.sidebarOpened, () => {
+  store.getters.sidebarOpened ? nomarin : margin
+})
 </script>
 
 <style lang="scss" scoped>
