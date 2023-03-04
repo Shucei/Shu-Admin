@@ -5,8 +5,7 @@
         <location />
       </el-icon>
       <span>{{ route.meta.title }}</span> -->
-      <MenuItem :title="route.meta.title" :icon="route.meta.icon">
-      </MenuItem>
+      <menu-item :title="route.meta.title" :icon="route.meta.icon"></menu-item>
     </template>
     <el-menu-item v-for="item in route.children" :key="item.path" :index="item.path" :route="item">
       {{
@@ -32,5 +31,17 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
+::v-deep .el-sub-menu__title,
+.el-menu-item {
+  display: block !important;
+}
 
+// .el-sub-menu .el-sub-menu__title {
+//   padding: none;
+//   margin-left: 16px;
+// }
+
+::v-deep .el-sub-menu {
+  width: 100px !important;
+}
 </style>

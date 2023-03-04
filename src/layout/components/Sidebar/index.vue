@@ -2,11 +2,11 @@
   <div class="">
     <div class="logo-container">
       <SvgIcon icon="logo" :style="{ margin: margin }"></SvgIcon>
-      <transition>
-        <h1 class="logo-title" v-if="flag = $store.getters.sidebarOpened">
-          Shu-Admin
-        </h1>
-      </transition>
+
+      <h1 class="logo-title" v-if="flag = $store.getters.sidebarOpened">
+        Shu-Admin
+      </h1>
+
     </div>
     <el-scrollbar>
       <sidebar-menu></sidebar-menu>
@@ -17,12 +17,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useStore } from 'vuex';
 import SidebarMenu from './SidebarMenu'
-const store = useStore()
-// const margin = {
-//   margin: 'auto'
-// }
+
 const margin = ref('auto')
 const flag = ref(false)
 
@@ -47,13 +43,6 @@ watch(flag, (newvalue) => {
     // line-height: 50px;
     font-size: 20px;
     white-space: nowrap;
-  }
-
-  .svg-icon {
-    width: 25px;
-    height: 50px;
-    vertical-align: middle;
-
   }
 }
 </style>
