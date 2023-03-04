@@ -8,33 +8,37 @@ const privateRoutes = [
   {
     path: '/user',
     component: layout,
+    name: 'user',
     redirect: '/user/manage',
     meta: {
-      title: 'user',
+      title: '用户管理',
       icon: 'personnel'
     },
     children: [
       {
         path: '/user/manage',
+        name: 'userManage',
         component: () => import('@/views/user-manage/index'),
         meta: {
-          title: 'userManage',
+          title: '员工管理',
           icon: 'personnel-manage'
         }
       },
       {
         path: '/user/role',
+        name: 'roleList',
         component: () => import('@/views/role-list/index'),
         meta: {
-          title: 'roleList',
+          title: '角色列表',
           icon: 'role'
         }
       },
       {
         path: '/user/permission',
+        name: 'permissionList',
         component: () => import('@/views/permission-list/index'),
         meta: {
-          title: 'permissionList',
+          title: '权限列表',
           icon: 'permission'
         }
       },
@@ -59,17 +63,19 @@ const privateRoutes = [
   {
     path: '/article',
     component: layout,
+    name: 'article',
     redirect: '/article/ranking',
     meta: {
-      title: 'article',
+      title: '文章管理',
       icon: 'article'
     },
     children: [
       {
         path: '/article/ranking',
+        name: 'articleRanking',
         component: () => import('@/views/article-ranking/index'),
         meta: {
-          title: 'articleRanking',
+          title: '文章排名',
           icon: 'article-ranking'
         }
       },
@@ -82,9 +88,10 @@ const privateRoutes = [
       },
       {
         path: '/article/create',
+        name: 'articleCreate',
         component: () => import('@/views/article-create/index'),
         meta: {
-          title: 'articleCreate',
+          title: '创建文章',
           icon: 'article-create'
         }
       },
@@ -114,11 +121,11 @@ const publicRoutes = [
     children: [
       {
         path: '/profile',
-        name: '/profile',
+        name: 'profile',
         component: () => import('@/views/profile/index'),
         meta: {
-          title: 'profile',
-          icon: 'el-icon-user'
+          title: '首页',
+          icon: 'home'
         }
       },
       {

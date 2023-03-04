@@ -1,6 +1,6 @@
 <template>
   <i v-if="icon.includes('el-icon')" class="sub-el-icon" :class="icon"></i>
-  <svg-icon v-else :icon="icon"></svg-icon>
+  <svg-icon class="iconfont" v-else :icon="icon"></svg-icon>
   <span class="title">{{ title }}</span>
 </template>
 <script setup>
@@ -25,5 +25,9 @@ defineProps({
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.iconfont {
+  font-size: 20px;
 }
 </style>

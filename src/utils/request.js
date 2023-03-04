@@ -20,8 +20,6 @@ service.interceptors.request.use(
       // token过期处理，主动处理
       const newTime = Date.now()
       const curTime = getItem('loginTime')
-      console.log(newTime, curTime)
-      console.log(newTime - curTime > Time)
       if (newTime - curTime > Time) {
         store.dispatch('user/logout')
         router.push('/login')

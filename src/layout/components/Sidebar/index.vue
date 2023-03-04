@@ -1,9 +1,9 @@
 <template>
   <div class="">
     <div class="logo-container">
-      <SvgIcon icon="logo" :style="changeMargin"></SvgIcon>
+      <SvgIcon icon="logo" :style="{ margin: margin }"></SvgIcon>
       <transition>
-        <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
+        <h1 class="logo-title" v-if="flag = $store.getters.sidebarOpened">
           Shu-Admin
         </h1>
       </transition>
@@ -16,20 +16,21 @@
 </template>
 
 <script setup>
-import { watch } from 'vue';
+import { ref } from 'vue';
 import { useStore } from 'vuex';
 import SidebarMenu from './SidebarMenu'
 const store = useStore()
-const margin = {
-  margin: 'auto'
-}
-const nomarin = {
-  margin: 'none'
-}
+// const margin = {
+//   margin: 'auto'
+// }
+const margin = ref('auto')
+const flag = ref(false)
 
-watch(store.getters.sidebarOpened, () => {
-  store.getters.sidebarOpened ? nomarin : margin
+watch(flag, (newvalue) => {
+  console.log(margin.value);
+  newvalue ? margin.value = '' : margin.value = 'auto'
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -51,6 +52,8 @@ watch(store.getters.sidebarOpened, () => {
   .svg-icon {
     width: 25px;
     height: 50px;
+    vertical-align: middle;
+
   }
 }
 </style>

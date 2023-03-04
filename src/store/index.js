@@ -1,16 +1,13 @@
 import { createStore } from 'vuex'
+import getters from './getters'
 // import createPersistedstate from 'vuex-persistedstate' // 用于持久化
 import user from './modules/user.js'
+import app from './modules/app.js'
 export default createStore({
-  getters: {
-    token: (state) => state.user.token,
-    hasUserInfo: (state) => {
-      return JSON.stringify(state.user.userInfo) !== '{}'
-    },
-    avatar: (state) => state.user.userInfo.staffPhoto
-  },
+  getters: getters,
   modules: {
-    user
+    user,
+    app
   }
 
   // // 配置插件
