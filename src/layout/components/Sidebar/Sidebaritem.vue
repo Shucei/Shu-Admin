@@ -9,7 +9,7 @@
     </template>
     <el-menu-item v-for="item in route.children" :key="item.path" :index="item.path" :route="item">
       {{
-        item.meta.title
+        generateTitle(item.meta.title)
       }}</el-menu-item>
   </el-sub-menu>
 
@@ -21,6 +21,7 @@
 <script setup>
 import MenuItem from "./MenuItem.vue";
 import { defineProps } from 'vue'
+import { generateTitle } from '@/utils/i18n'
 // 定义 props
 const props = defineProps({
   route: {
