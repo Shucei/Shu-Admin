@@ -23,9 +23,11 @@
       </el-form-item>
 
       <el-form-item class="bnt-flex">
-        <el-button :icon="CircleClose" round size="large" @click="resetForm(formRef)">重置</el-button>
+        <el-button :icon="CircleClose" round size="large" @click="resetForm(formRef)">{{
+          $t('msg.login.reset')
+        }}</el-button>
         <el-button :icon="UserFilled" round size="large" type="primary" :loading="loading" @click="handerLogin">
-          登录
+          {{ $t('msg.login.loginBtn') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -38,18 +40,19 @@ import { CircleClose, UserFilled, Lock, User, Message } from "@element-plus/icon
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-
+import { useI18n } from 'vue-i18n'
 const formRef = ref(null)
 // 数据源
 const LoginForm = ref({
   username: '13800000002',
   password: '123456'
 })
+const i18n = useI18n()
 // 验证规则
 const loginRules = reactive({
   username: [
-    { required: true, message: '用户名为必填项', trigger: 'blur' },
-    { min: 3, max: 11, message: 'Length should be 3 to 11', trigger: 'blur' },
+    { required: true, message: i18n.t('msg.login.usernameRule'), trigger: 'blur' },
+    { min: 3, max: 11, message: i18n.t('msg.login.usernameRule'), trigger: 'blur' },
   ],
   password: [
     {

@@ -11,10 +11,13 @@ import 'nprogress/nprogress.css'
 import svgIconPlugin from '@/icons/index'
 // 导入vuex
 import store from '@/store/index'
-// 导入全局路由
+// i18n （PS：导入放到 APP.vue 导入之前，因为后面我们会在 app.vue 中使用国际化内容）
+import i18n from '@/i18n'
+import installElementPlus from '@/plugins/elememt.js'
 
 import App from './App.vue'
 const app = createApp(App)
 app.use(VueRouter).use(store).mount('#app')
-
+app.use(i18n)
 svgIconPlugin(app)
+installElementPlus(app)

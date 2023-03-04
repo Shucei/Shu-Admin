@@ -5,12 +5,14 @@
 
         <!-- 不可点击项 -->
         <span v-if="index === breadcrumbData.length - 1" class="no-redirect">{{
-          item.meta.title
-        }}</span>
+          generateTitle(item.meta.title)
+        }}
+        </span>
         <!-- 可点击项 -->
         <a v-else class="redirect" @click.prevent="onLinkClick(item)">{{
-          item.meta.title
-        }}</a>
+          generateTitle(item.meta.title)
+        }}
+        </a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -19,12 +21,11 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-
+import { generateTitle } from '@/utils/i18n'
 const route = useRoute()
 // 生成数组数据
 const breadcrumbData = ref([])
 const getBreadcrumbData = () => {
-  console.log(route);
   breadcrumbData.value = route.matched.filter(
     item => item.meta && item.meta.title
   )

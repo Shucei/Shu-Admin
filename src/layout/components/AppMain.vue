@@ -1,13 +1,6 @@
 <template>
   <div class="app-main">
-    main
-    <router-view>
-      <transition name="fade-transform" mode="out-in">
-        <keep-alive>
-          <component :is="" :key="route.path" />
-        </keep-alive>
-      </transition>
-    </router-view>
+    <router-view></router-view>
   </div>
 </template>
 
