@@ -3,11 +3,13 @@ import getters from './getters'
 // import createPersistedstate from 'vuex-persistedstate' // 用于持久化
 import user from './modules/user.js'
 import app from './modules/app.js'
+import theme from './modules/theme'
 export default createStore({
   getters: getters,
   modules: {
     user,
-    app
+    app,
+    theme
   }
 
   // // 配置插件

@@ -18,8 +18,8 @@
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue'
 import { useStore } from 'vuex'
+import { generateNewStyle } from "@/utils/theme";
 const store = useStore()
-
 defineProps({
   modelValue: {
     type: Boolean,
@@ -61,6 +61,7 @@ const closed = () => {
  * 3. 关闭 dialog
  */
 const comfirm = async () => {
+  generateNewStyle(mColor.value)
   // 2. 保存最新的主题色
   store.commit('theme/setMainColor', mColor.value)
   // 3. 关闭 dialog

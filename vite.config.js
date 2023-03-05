@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
+import requireTransform from 'vite-plugin-require-transform'
 import { resolve } from 'path'
 
 import AutoImport from 'unplugin-auto-import/vite'
@@ -21,13 +21,15 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()]
     }),
-
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹，地址可改
       // 指定需要缓存的图标文件夹
       iconDirs: [resolve(process.cwd(), 'src/icons/svg')], //文件路径一定需要写对
       // 指定symbolId格式
       symbolId: 'icon-[dir]-[name]'
+    }),
+    requireTransform({
+      fileRegex: /.js$|.vue$/
     })
   ],
   // css: {
