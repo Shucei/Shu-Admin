@@ -2,11 +2,17 @@ import formula from '@/constant/formula.json'
 import rgbHex from 'rgb-hex'
 import axios from 'axios'
 import color from 'css-color-function'
-/**
- * 把生辰的样式表写入到style中
- */
 
-export const writeNewStyle = (newStyle) => {}
+/**
+ * 写入新样式到 style
+ * @param {*} elNewStyle  element-plus 的新样式
+ * @param {*} isNewStyleTag 是否生成新的 style 标签
+ */
+export const writeNewStyle = (elNewStyle) => {
+  const style = document.createElement('style')
+  style.innerText = elNewStyle
+  document.head.appendChild(style)
+}
 
 /**
  * 根据主题色，生成最新的样式表
@@ -27,13 +33,13 @@ export const generateNewStyle = async (parimaryColor) => {
   return cssText
 }
 
-export const generateColors = (parimary) => {
-  if (!parimary) return
+export const generateColors = (primary) => {
+  if (!primary) return
   const colors = {
-    parimary
+    primary
   }
   Object.keys(formula).forEach((key) => {
-    const value = formula[key].replace(/primary/g, parimary)
+    const value = formula[key].replace(/primary/g, primary)
     colors[key] = '#' + rgbHex(color.convert(value)) //转换为16进制色值
   })
   return colors
