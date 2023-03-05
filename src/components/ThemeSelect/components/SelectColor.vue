@@ -17,6 +17,9 @@
 
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue'
+import { useStore } from 'vuex'
+const store = useStore()
+
 defineProps({
   modelValue: {
     type: Boolean,
@@ -43,7 +46,7 @@ const predefineColors = [
   '#c7158577'
 ]
 // 默认色值
-const mColor = ref('#00ff00')
+const mColor = ref(store.getters.mainColor)
 
 /**
  * 关闭
@@ -58,6 +61,8 @@ const closed = () => {
  * 3. 关闭 dialog
  */
 const comfirm = async () => {
+  // 2. 保存最新的主题色
+  store.commit('theme/setMainColor', mColor.value)
   // 3. 关闭 dialog
   closed()
 }
