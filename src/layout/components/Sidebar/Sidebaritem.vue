@@ -37,10 +37,6 @@ const props = defineProps({
   display: block !important;
 }
 
-// .el-sub-menu .el-sub-menu__title {
-//   padding: none;
-//   margin-left: 16px;
-// }
 
 ::v-deep .el-sub-menu {
   width: 100px !important;
