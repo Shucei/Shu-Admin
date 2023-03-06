@@ -23,7 +23,6 @@ const margin = ref('auto')
 const flag = ref(false)
 
 watch(flag, (newvalue) => {
-  console.log(margin.value);
   newvalue ? margin.value = '' : margin.value = 'auto'
 })
 
