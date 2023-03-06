@@ -38,6 +38,7 @@ export const generateColors = (primary) => {
   const colors = {
     primary
   }
+  console.log(colors)
   Object.keys(formula).forEach((key) => {
     const value = formula[key].replace(/primary/g, primary)
     colors[key] = '#' + rgbHex(color.convert(value)) //转换为16进制色值

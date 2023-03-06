@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-import variables from '@/styles/variables.module.scss'
 import Navbar from './components/Navbar.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import AppMain from './components/AppMain.vue'
