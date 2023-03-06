@@ -1,4 +1,3 @@
-import variables from '@/styles/variables.module.scss'
 import { MAIN_COLOR } from '@/constant'
 import { getItem } from '@/utils/storage'
 import { generateColors } from '@/utils/theme'
@@ -10,7 +9,7 @@ const getters = {
   avatar: (state) => state.user.userInfo.staffPhoto,
   cssVar: (state) => {
     return {
-      ...variables,
+      ...state.theme.variables, // 根据theme中variables的值变化而响应变化
       ...generateColors(getItem(MAIN_COLOR))
     }
   },
