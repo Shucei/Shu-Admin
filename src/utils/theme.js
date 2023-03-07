@@ -4,6 +4,12 @@ import axios from 'axios'
 import color from 'css-color-function'
 
 /**
+ * 1、color这个对象中{primary:#123456}，将json文件中的属性的值中的primary替换为传递进来的16进制色值，并将改变后的属性值依次转为16进制并添加入colors对象中
+ * 2、拿取到elememt-plus中所有的css样式表，将包含colorMap对象中的属性的所有内容替换为值(变量)
+ * 3、遍历colors对象，利用正则匹配到:primary(colors中的key)的值变为对应的属性值{el-munBg:primary} ——> {el-munBg:#123456}
+ */
+
+/**
  * 写入新样式到 style
  * @param {*} elNewStyle  element-plus 的新样式
  * @param {*} isNewStyleTag 是否生成新的 style 标签
