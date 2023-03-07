@@ -1,7 +1,8 @@
 import { createI18n } from 'vue-i18n'
 import mZhLocale from './lang/zh'
 import mEnLocale from './lang/en'
-const locale = 'zh'
+import { getItem } from '@/utils/storage'
+const locale = getItem('lang')
 const messages = {
   en: {
     msg: {
