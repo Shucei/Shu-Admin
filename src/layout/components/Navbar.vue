@@ -1,8 +1,11 @@
 <template>
   <div class="navbar">
+    <!-- 侧边栏控制按钮 -->
     <Hamburger class="hamburger-container"></Hamburger>
-    <breadcrumb class="breadcrumb-container" />
+    <!-- 面包屑 -->
+    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
+      <guide class="right-menu-item hover-effect" />
       <header-search class="right-menu-item hover-effect"></header-search>
       <screenfull class="right-menu-item hover-effect" />
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
@@ -41,6 +44,7 @@ import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemeSelect/index'
 import Screenfull from '@/components/Screenfull'
 import headerSearch from "@/components/headerSearch/index";
+import Guide from '@/components/Guide'
 const store = useStore()
 const router = useRouter()
 const Logout = () => {
