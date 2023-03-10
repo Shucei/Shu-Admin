@@ -2,7 +2,7 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary"> {{ $t('msg.excel.importExcel') }}</el-button>
+        <el-button type="primary" @click="onImportExcelClick"> {{ $t('msg.excel.importExcel') }}</el-button>
         <el-button type="success">
           {{ $t('msg.excel.exportExcel') }}
         </el-button>
@@ -70,6 +70,7 @@
 <script setup>
 import { ref } from 'vue'
 import { getEmployeeList } from '@/api/user-manage'
+import { useRouter } from 'vue-router';
 
 const page = ref({
   page: 1, // 当前页码
@@ -84,7 +85,6 @@ const getUserMessageList = async () => {
   })
   page.value.total = total
   list.value = rows
-
 }
 getUserMessageList()
 // 时间处理
@@ -94,6 +94,15 @@ const fillteTime = (time) => {
 
 
 const handleSizeChange = () => { }
+
+
+const router = useRouter()
+/**
+ * excel 导入点击事件
+ */
+const onImportExcelClick = () => {
+  router.push('/user/import')
+}
 </script>
 
 <style lang="scss" scoped>

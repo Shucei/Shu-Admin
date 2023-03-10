@@ -2,7 +2,13 @@ import { createI18n } from 'vue-i18n'
 import mZhLocale from './lang/zh'
 import mEnLocale from './lang/en'
 import { getItem } from '@/utils/storage'
-const locale = getItem('lang')
+import store from '@/store'
+/**
+ * 返回当前 lang
+ */
+function getLanguage() {
+  return getItem('lang') || store.getters.language || 'zh'
+}
 const messages = {
   en: {
     msg: {
@@ -20,7 +26,7 @@ const i18n = createI18n({
   legacy: false,
   // 全局注入 $t 函数
   globalInjection: true,
-  locale,
+  locale: getLanguage(),
   messages
 })
 

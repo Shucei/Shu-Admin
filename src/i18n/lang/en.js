@@ -22,7 +22,7 @@ export default {
   route: {
     profile: 'Profile',
     user: 'user',
-    home: 'home',
+    home: 'Home',
     excelImport: 'ExcelImport',
     userManage: 'EmployeeManage',
     userInfo: 'UserInfo',
@@ -89,9 +89,9 @@ export default {
     introduce: 'Introduce',
     projectIntroduction: 'Project Introduction',
     projectFunction: 'Project Function',
-    feature: 'Feature',
+    information: 'Information',
     chapter: 'Chapter',
-    author: 'Author',
+    account: 'Account',
     name: 'Sunday',
     job: 'A front-end development program',
     Introduction:

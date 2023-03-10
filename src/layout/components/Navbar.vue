@@ -14,7 +14,7 @@
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar shape="square" :size="33" fit
-            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            src="https://i.gtimg.cn/club/item/face/img/2/16022_100.gif"></el-avatar>
           <i class="el-icon-s-tools"></i>
         </div>
         <template #dropdown>

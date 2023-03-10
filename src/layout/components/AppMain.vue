@@ -30,6 +30,7 @@ const getTitle = route => {
   }
   return title
 }
+// tagsView路由变动将当前路由信息放入[]进行遍历
 watch(route, (to, from) => {
   if (isTags.includes(to.path)) return
   const { fullPath, meta, name, params, path, query } = to

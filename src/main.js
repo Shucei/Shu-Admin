@@ -12,12 +12,14 @@ import svgIconPlugin from '@/icons/index'
 // 导入vuex
 import store from '@/store/index'
 // i18n （PS：导入放到 APP.vue 导入之前，因为后面我们会在 app.vue 中使用国际化内容）
-import i18n from '@/i18n'
+import i18n from '@/i18n/index'
 import installElementPlus from '@/plugins/elememt.js'
-
+// 自定义指令
+import lazyPlugin from '@/directive/index'
 import App from './App.vue'
 const app = createApp(App)
 app.use(VueRouter).use(store).mount('#app')
 app.use(i18n)
+app.use(lazyPlugin)
 svgIconPlugin(app)
 installElementPlus(app)

@@ -88,9 +88,9 @@ export default {
     introduce: '介绍',
     projectIntroduction: '项目介绍',
     projectFunction: '项目功能',
-    feature: '功能',
+    information: '基本信息',
     chapter: '章节',
-    author: '作者',
+    account: '账号绑定',
     name: 'Sunday',
     job: '一个前端开发程序猿',
     Introduction:

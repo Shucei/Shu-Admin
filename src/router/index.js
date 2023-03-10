@@ -109,16 +109,25 @@ const publicRoutes = [
   },
   {
     path: '/',
-    redirect: '/profile', //重定向
+    redirect: '/home', //重定向
     component: layout,
     children: [
       {
-        path: '/profile',
-        name: 'profile',
-        component: () => import('@/views/profile/index'),
+        path: '/home',
+        name: 'home',
+        component: () => import('@/views/home/index'),
         meta: {
           title: 'home',
           icon: 'home'
+        }
+      },
+      {
+        path: '/profile',
+        name: 'profile',
+        component: () => import('@/views/profile/index.vue'),
+        meta: {
+          title: 'profile',
+          icon: 'individual'
         }
       },
       {
