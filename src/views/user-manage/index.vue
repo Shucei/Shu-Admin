@@ -19,7 +19,7 @@
         <!-- 头像 -->
         <el-table-column :label="$t('msg.excel.avatar')" align="center">
           <template v-slot="{ row }">
-            <img class="avatar" v-lazy:src="row.staffPhoto" alt="" srcset="">
+            <img class="avatar" v-lazy :src="row.staffPhoto" alt="" srcset="">
             <!-- <el-image class="avatar" :onerror="img" :src="row.staffPhoto" :preview-src-list="[row.staffPhoto]"> -->
             <!-- </el-image> -->
           </template>
@@ -71,6 +71,7 @@
 import { ref } from 'vue'
 import { getEmployeeList } from '@/api/user-manage'
 import { useRouter } from 'vue-router';
+const router = useRouter()
 
 const page = ref({
   page: 1, // 当前页码
@@ -93,16 +94,23 @@ const fillteTime = (time) => {
 }
 
 
-const handleSizeChange = () => { }
+const handleSizeChange = currentSize => {
+  page.value.size = currentSize
+}
+const handleCurrentChange = currentPage => {
+  page.value.page = currentPage
+}
 
-
-const router = useRouter()
+watch(page, () => {
+  getUserMessageList()
+}, { immediate: true, deep: true })
 /**
  * excel 导入点击事件
  */
 const onImportExcelClick = () => {
   router.push('/user/import')
 }
+
 </script>
 
 <style lang="scss" scoped>
