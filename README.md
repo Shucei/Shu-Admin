@@ -34,6 +34,14 @@
 - [ ] 使用 VueRouter 进行路由权限拦截、页面按钮权限配置、路由懒加载
 - [ ] 使用 keepAlive 对页面进行缓存，支持多级嵌套页面缓存
 
+```
+npm run dev
+```
+
+```
+yarn dev
+```
+
 ![](./src/assets/images/1.png)
 
 ![](./src/assets/images/2.png)
