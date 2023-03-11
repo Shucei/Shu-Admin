@@ -3,7 +3,7 @@
     <el-card class="header">
       <div>
         <el-button type="primary" @click="onImportExcelClick"> {{ $t('msg.excel.importExcel') }}</el-button>
-        <el-button type="success">
+        <el-button type="success" @click="onToExcelClick">
           {{ $t('msg.excel.exportExcel') }}
         </el-button>
       </div>
@@ -23,7 +23,6 @@
             <!-- <el-image class="avatar" :onerror="img" :src="row.staffPhoto" :preview-src-list="[row.staffPhoto]"> -->
             <!-- </el-image> -->
           </template>
-
         </el-table-column>
         <!-- 标签 -->
         <el-table-column :label="$t('msg.excel.role')">
@@ -46,14 +45,14 @@
         </el-table-column>
         <!-- 查看、角色、删除 -->
         <el-table-column :label="$t('msg.excel.action')" fixed="right" width="260">
-          <template #default>
-            <el-button type="primary" size="small">{{
+          <template #default="{ row }">
+            <el-button type="primary" size="small" @click="onShowClick(row.id)">{{
               $t('msg.excel.show')
             }}</el-button>
             <el-button type="info" size="small">{{
               $t('msg.excel.showRole')
             }}</el-button>
-            <el-button type="danger" size="small">{{
+            <el-button type="danger" size="small" @click="onRemove(row)">{{
               $t('msg.excel.remove')
             }}</el-button>
           </template>
@@ -64,15 +63,19 @@
         layout="total, sizes, prev, pager, next, jumper" :total="page.total">
       </el-pagination>
     </el-card>
+    <export-to-excel :page="page" v-model="exportToExcelVisible"></export-to-excel>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { getEmployeeList } from '@/api/user-manage'
+import ExportToExcel from './components/Export2Excel.vue'
+import { getEmployeeList, delEmployee } from '@/api/user-manage'
 import { useRouter } from 'vue-router';
+import { ElMessageBox } from 'element-plus';
+import { useI18n } from 'vue-i18n';
 const router = useRouter()
-
+const i18n = useI18n()
 const page = ref({
   page: 1, // 当前页码
   size: 5,
@@ -111,6 +114,30 @@ const onImportExcelClick = () => {
   router.push('/user/import')
 }
 
+// 删除用户
+const onRemove = row => {
+  ElMessageBox.confirm(
+    i18n.t('msg.excel.dialogTitle1') + row.username + i18n.t('msg.excel.dialogTitle2'),
+    { type: 'warning' }
+  ).then(async () => {
+    await delEmployee(row.id)
+    ElMessage.success(i18n.t('msg.excel.removeSuccess'))
+    getUserMessageList()
+  })
+}
+
+// 导出
+const exportToExcelVisible = ref(false)
+const onToExcelClick = () => {
+  exportToExcelVisible.value = true
+}
+
+/**
+ * 查看按钮点击事件
+ */
+const onShowClick = id => {
+  router.push(`/user/info/${id}`)
+}
 </script>
 
 <style lang="scss" scoped>
