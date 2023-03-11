@@ -69,6 +69,10 @@ defineProps({
   height: {
     type: String,
     default: '150px'
+  },
+  detailData: {
+    type: Object,
+    default: () => { }
   }
 })
 </script>

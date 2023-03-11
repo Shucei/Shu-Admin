@@ -49,7 +49,7 @@
             <el-button type="primary" size="small" @click="onShowClick(row.id)">{{
               $t('msg.excel.show')
             }}</el-button>
-            <el-button type="info" size="small">{{
+            <el-button type="info" size="small" @click="onShowRoleClick(row)">{{
               $t('msg.excel.showRole')
             }}</el-button>
             <el-button type="danger" size="small" @click="onRemove(row)">{{
@@ -64,12 +64,14 @@
       </el-pagination>
     </el-card>
     <export-to-excel :page="page" v-model="exportToExcelVisible"></export-to-excel>
+    <roles-dialog v-model="roleDialogVisible"></roles-dialog>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import ExportToExcel from './components/Export2Excel.vue'
+import RolesDialog from './components/roles.vue'
 import { getEmployeeList, delEmployee } from '@/api/user-manage'
 import { useRouter } from 'vue-router';
 import { ElMessageBox } from 'element-plus';
@@ -137,6 +139,14 @@ const onToExcelClick = () => {
  */
 const onShowClick = id => {
   router.push(`/user/info/${id}`)
+}
+
+/**
+ * 查看角色的点击事件
+ */
+const roleDialogVisible = ref(false)
+const onShowRoleClick = row => {
+  roleDialogVisible.value = true
 }
 </script>
 

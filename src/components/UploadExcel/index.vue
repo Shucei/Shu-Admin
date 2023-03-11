@@ -130,7 +130,7 @@ const handleDragover = (e) => {
 
 </script>
 
-
+<style lang="scss" scoped>
 .upload-excel {
   display: flex;
   justify-content: center;
@@ -162,6 +162,5 @@ const handleDragover = (e) => {
       display: block;
     }
   }
-}
 }
 </style>
