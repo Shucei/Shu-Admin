@@ -31,8 +31,8 @@
 - [x] 使用 Prettier 统一格式化代码，集成 Eslint、Stylelint 代码校验规范
 - [x] 采用 Vite4 作为项目开发、打包工具（配置 Gzip 打包、TSX 语法、跨域代理……）
 - [x] 支持 Element 组件大小切换、暗黑模式、i18n 国际化
-- [ ] 使用 VueRouter 进行路由权限拦截、页面按钮权限配置、路由懒加载
-- [ ] 使用 keepAlive 对页面进行缓存，支持多级嵌套页面缓存
+- [x] 使用 VueRouter 进行路由权限拦截、页面按钮权限配置、路由懒加载
+- [x] 使用 keepAlive 对页面进行缓存，支持多级嵌套页面缓存
 
 ```
 npm run dev
@@ -53,3 +53,5 @@ yarn dev
 ![](./src/assets/images/5.png)
 
 ![](./src/assets/images/6.png)
+
+> > > > > > > 976a4154f28894a7cd4557894ea0f38a6e27acf0
